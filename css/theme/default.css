@@ -146,3 +146,8 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #13daec; }
+
+/* Custom */
+.reveal p {
+  margin: 30px 0 30px 0;
+}
