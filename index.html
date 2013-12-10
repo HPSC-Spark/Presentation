@@ -4,10 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
-
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<title>Installing Apache Spark on Janus</title>
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -86,6 +83,10 @@
 					</section>
 
 					<section>
+						<img src="images/mapreduce.png"></img>
+					</section>
+
+					<section>
 						<h2>Limitations of MapReduce</h2>
 						<h3 class="fragment">(or why Spark was created)</h3>
 						<p class="fragment">
@@ -101,26 +102,29 @@
 				</section>
 
 				<section>
-					<h2>Computation Model</h2>
-					<p class="fragment">
-						Spark's computation is based around
-						<em>Resilient Distributed Datasets</em> (RDDs).
-					</p>
+					<section>
+						<h2>Computation Model</h2>
+						<p class="fragment">
+							Spark's computation is based around
+							<em>Resilient Distributed Datasets</em> (RDDs).
+						</p>
 
-					<p class="fragment">
-						RDDs are chunks of data which may reside on disk, in memory,
-						or may not have been computed at all yet.
-					</p>
+						<p class="fragment">
+							RDDs are chunks of data which may reside on disk, in memory,
+							or may not have been computed at all yet.
+						</p>
 
-					<p class="fragment">
-						By default, applying an operation like <em>map</em> to a dataset
-						simply adds that map to a chain of computations.
-					<p>
+						<p class="fragment">
+							By default, applying an operation like <em>map</em> to a dataset
+							simply adds that map to a chain of computations.
+						<p>
+					</section>
 
-					<div>
-						<img class="fragment" src="images/listing.png"></img>
+					<section>
+						<h2>RDDs are represented lazily</h2>
+						<img src="images/listing.png"></img>
 						<img class="fragment" src="images/data_structure.png"></img>
-					</div>
+					</section>
 				</section>
 			</div>
 
