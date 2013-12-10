@@ -78,7 +78,50 @@
 							</li>
 						</ul>
 
+						<p class="fragment">
+							MapReduce nodes share and store data using a distributed filesystem like
+							the Hadoop Distributed Filesystem (HDFS). Every task stores its output
+							on this filesystem.
+						</p>
 					</section>
+
+					<section>
+						<h2>Limitations of MapReduce</h2>
+						<h3 class="fragment">(or why Spark was created)</h3>
+						<p class="fragment">
+							Because every task involves IO, spinning up many tasks in sequence
+							incurs a large performance penalty.
+						</p>
+
+						<p class="fragment">
+							Spark was designed to allow iterative algorithms to keep their results
+							in memory.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Computation Model</h2>
+					<p class="fragment">
+						Spark's computation is based around
+						<em>Resilient Distributed Datasets</em> (RDDs).
+					</p>
+
+					<p class="fragment">
+						RDDs are chunks of data which may reside on disk, in memory,
+						or may not have been computed at all yet.
+					</p>
+
+					<p class="fragment">
+						By default, applying an operation like <em>map</em> to a dataset
+						simply adds that map to a chain of computations.
+					<p>
+
+					<div>
+						<img class="fragment" src="images/listing.png"></img>
+						<img class="fragment" src="images/data_structure.png"></img>
+					</div>
+				</section>
 			</div>
 
 		</div>
