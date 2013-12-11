@@ -131,17 +131,54 @@
 					</section>
 				</section>
                 <section>
+                    <h2>Installation &amp; Profiling</h2>
+                    <ul style="margin-top: 50px;">
+                        <li class="fragment">Web UI &amp; Monitor Logs
+                            <ul>
+                                <li>Total runtime</li>
+                                <li>Application Progress</li>
+                                <li>Worker tasks competed</li>
+                                <li>Bytes read</li>
+                            </ul>
+                        </li>
+                        <li class="fragment">Execution scripts
+                            <ul>
+                                <li>Node &amp; Worker count</li>
+                                <li>Memory per Worker</li>
+                                <li>Cores per Worker</li>
+                                <li>Task size</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section>
                     <section>
-						<h2>Grep Overview</h2>
+                        <h2>Parallel Grep</h2>
+                        <ul style="margin-top: 50px;">
+                            <li>Check installation/performance</li>
+                            <li>Compare workers per node</li>
+                            <li>Running on 1 - 5 nodes</li>
+                            <li>Limited to 20GB file</li>
+                            <li>Compared to serial UNIX grep runtime</li>
+                        </ul>
                     </section>
                     <section>
-						<h2>Small Grep Speedup</h2>
+                        <h2>Grep Speedup</h2>
+                        <img src="images/workerPerNodeSpeedup.png" />
                     </section>
                     <section>
-						<h2>Big Grep Speedup</h2>
+                        <h2>Grep Efficiency</h2>
+                        <img src="images/workerPerNodeEfficiency.png" />
                     </section>
                     <section>
-						<h2>Big Grep Efficiency</h2>
+                        <h2>Issues & Possible Solution</h2>
+                        <ul style="margin-top: 50px;">
+                            <li>Scaling to 50 nodes on larger file showed no
+                                    speedup</li>
+                            <li>Possible IO bottleneck</li>
+                            <li>Perform additional computation</li>
+                            <li>Larger file size needed</li>
+                        </ul>
                     </section>
                 </section>
 			</div>
