@@ -181,6 +181,241 @@
                         </ul>
                     </section>
                 </section>
+
+	    <section>
+	        <h2>Why Page Rank?</h2>
+<div>
+	        <br>
+	    </div>
+<div>
+	    <ul>
+	        <li>
+<span style="text-align: center;">Good &nbsp;example of more complex &nbsp;algorithm</span>
+	        <br>
+</li>
+	    </ul>
+	</div>
+<div>
+	<span>Multiple stages of map and reduce</span>
+</div>
+<div>
+<span>
+	<br>
+</span>
+</div>
+<div class="absolute-element" style="position: absolute; width: 642px; height: 46px; z-index: 4; left: 117px; top: 344px;">
+<ul>
+	<li>
+<span style="text-align: center;">Benefits of spark's in memory caching</span>
+	<br>
+</li>
+</ul>
+</div>
+<div class="absolute-element" style="position: absolute; width: 598px; height: 46px; z-index: 4; left: 161px; top: 402px;">
+<span>Multiple iterations over the same data</span>
+</div>
+<div>
+<br>
+</div>
+</section>
+<section>
+	<h2>Basic IDEA</h2>
+<div>
+<span>
+	<i>Give pages scores based on links to them</i>
+</span>
+<br>
+<span>
+	<ul>
+	    <li>
+<span style="text-align: center;">links from many pages -&gt; high rank</span>
+	    <br>
+</li>
+	</ul>
+</span>
+<ol>
+</ol>
+<ul>
+<li style="text-align: center; ">links from a high rank page &nbsp;-&gt;high rank</li>
+</ul>
+</div>
+<div>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/anithaganesha/images/188323/pagerank.jpg" style="width: 539.5402025297611px; height: 366.4524526357412px; max-height: none; max-width: none;">
+<span style="font-size: 75.96px;">
+	<br>
+</span>
+</div>
+</section>
+</section>
+<section>
+	<section>
+	    <h2>Algorithm</h2>
+<ol style="font-family: monospace">
+	<li>Start each page at a rank of 1</li>
+	<li>On each iteration, have page p contribute <code><pre>(rank)_p/|(neighbors)_p </pre></code> to its neighbors</li>
+	<li>Set each page’s rank to 0.15 + 0.85 * contribs.</li>
+</ol>
+</section>
+<section>
+<h2>Dataset</h2>
+<div>
+	<ul>
+<li>source: DBPedia(Wikipedia Dump)</li>
+<li>size: &nbsp;25GB. But successful to run only on 10GB.</li>
+<li>data set format: &nbsp;</li>
+<ul>
+	<li>&nbsp;Page URL &nbsp; &nbsp; &nbsp; &nbsp;Property &nbsp; &nbsp; &nbsp; &nbsp; Link URL</li>
+</ul>
+<li>Each page is a vertex of a graph.</li>
+<li>Each link to a neighboring vertex is an edge of the vertex.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+</li>
+</ul>
+<span style="text-align: left;">&nbsp;</span>
+<br>
+</div>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/ninggao/images/189315/Rplot03.png" style="width: 313.0941182357935px; height: 291.11275289798607px; max-height: none; max-width: none;">
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/ninggao/images/189316/Rplot02.png" style="width: 316.0374901050893px; height: 293.849479772644px; max-height: none; max-width: none;">
+</section>
+<section>
+	<h2>What is Bagel</h2>
+<p>
+</p>
+<ul>
+<li>Spark implementation of Google's graph processing framework called <a href="http://portal.acm.org/citation.cfm?id=1807184">Pregel.</a>
+</li>
+<li>Programming model: &nbsp;</li>
+</ul>
+<p>
+</p>
+<p style="font-size: 36.286285400390625px; font-style: normal; font-variant: normal;">
+</p>
+<ul>
+<ul>
+<li>Operates on distributed data of (K, V) pairs, &nbsp;where &nbsp;<span>K is a vertex id and V is value of the vertex and associated&nbsp;</span>
+<span style="text-align: center;">weights.</span>
+</li>
+</ul>
+</ul>
+<h2>
+<span style="text-transform: uppercase;">Simple versus bagel</span>
+</h2>
+<div>
+<ul>
+<li style="text-transform: uppercase;">old IMPLEMENTATION of &nbsp;graph algorithm.</li>
+</ul>
+</div>
+</section>
+<section>
+	<h2>Scala Implementation</h2>
+<div>Simple:</div>
+<div>
+<pre><code></code></pre>
+</div>
+</section>
+<section>
+	<h2>Analysis on janus</h2>
+<div>
+<ol>
+<li>Scalability test</li>
+<li>In-memory RDD test</li>
+<li>Insufficient memory test</li>
+<li>bagel versus simple</li>
+<li>Data processing skew</li>
+</ol>
+<br>
+</div>
+<div>
+	<br>
+</div>
+<div>
+<br>
+</div>
+</section>
+</section>
+<section>
+	<section>
+	    <h2>1.Scalability test</h2>
+	    <div>Datasize: 5m(700MB)</div>
+	    <div>
+	        <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/ninggao/images/189341/Rplot04.png">
+	        <br>
+	    </div>
+	</section>
+	<section>
+	    <h2>2. IN MEMORY RDD TEST</h2>
+	    <div>
+	        <div style="font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Dataset: 50m(7GB)&nbsp;</div>
+	        <div style="font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Nodes Used: 12, 8(12cores each)</div>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <br>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <br>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Communication Cost</div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Computing Cost</div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <br>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <br>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">4~5 times faster in later</div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">iterations</div>
+	    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/ninggao/images/189236/Rplot01.png" style="width: 536px; height: 498px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 8px; top: 186px;" class="absolute-element">
+	</section>
+	<section>
+	    <h2>3. INSUFFICIENT MEMORY TEST</h2>
+	    <div>
+	        <div style="font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Dataset: 30m(4.2GB)&nbsp;</div>
+	        <div style="font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Nodes Used: 4(12cores each)</div>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <br>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <br>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Consumes &nbsp;8.8GB/node</div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <br>
+	    </div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Mem only when 18, 10GB</div>
+	    <div style="text-align: right; font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Disk used since 6GB</div>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/ninggao/images/189181/Rplot.png" style="width: 543px; height: 504px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 0px; top: 181px;" class="absolute-element">
+	</section>
+	<section>
+	    <h2>4. BAGEL VERSUS SIMPLE TEST</h2>
+	    <div>Dataset: 30m(4.2GB)</div>
+	    <div>Nodes Used: 4(12cores each)</div>
+	    <div>&nbsp;</div>
+	    <blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+	        <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Bagel &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Simple</div>
+	    </blockquote>
+	    <blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+	        <div>mem contrast: 8.8GB/node &nbsp; 700MB/node</div>
+	        <div>
+	            <span>time contrast: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 168sec &nbsp; &nbsp; 82sec&nbsp;</span>
+	        </div>
+	    </blockquote>
+	    <br>
+	</section>
+	<section>
+	    <h2>5. DATA SKEW TEST</h2>
+	    <div>
+	        <div style="font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Dataset: 30m(4.2GB)</div>
+	        <div style="font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">Nodes Used: 8(12cores each)</div>
+	    </div>
+	    <div style="font-size: 35.577449798583984px; font-style: normal; font-variant: normal;">
+	        <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/ninggao/images/189354/Rplot05.png" style="width: 524.5254513106845px; height: 487.70014894088627px; max-height: none; max-width: none;">
+	        <br>
+	    </div>
+	</section>
+</section>
+<section>
+	<h2>CONCLUSION</h2>
 			</div>
 
 		</div>
