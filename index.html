@@ -143,9 +143,9 @@
                         </li>
                         <li class="fragment">Execution scripts
                             <ul>
-                                <li>Node &amp; Worker count</li>
-                                <li>Memory per Worker</li>
-                                <li>Cores per Worker</li>
+                                <li>Node &amp; worker count</li>
+                                <li>Memory per worker</li>
+                                <li>Cores per worker</li>
                                 <li>Task size</li>
                             </ul>
                         </li>
@@ -173,11 +173,12 @@
                     <section>
                         <h2>Issues & Possible Solution</h2>
                         <ul style="margin-top: 50px;">
+                            <li>Limited by single node memory size</li>
                             <li>Scaling to 50 nodes on larger file showed no
                                     speedup</li>
                             <li>Possible IO bottleneck</li>
-                            <li>Perform additional computation</li>
                             <li>Larger file size needed</li>
+                            <li>Perform additional computation (PageRank)</li>
                         </ul>
                     </section>
                 </section>
